@@ -34,4 +34,12 @@ export default await Env.create(new URL('../', import.meta.url), {
   KEYCLOAK_CLIENT_ID: Env.schema.string(),
   KEYCLOAK_ADMIN_USERNAME: Env.schema.string(),
   KEYCLOAK_ADMIN_PASSWORD: Env.schema.string(),
+
+  S3_ENDPOINT: Env.schema.string(),
+  S3_PORT: Env.schema.number(),
+  S3_REGION: Env.schema.string(),
+  S3_KEY: Env.schema.string(),
+  S3_SECRET: Env.schema.string(),
+  S3_BUCKET: Env.schema.string(),
+  S3_USE_SSL: Env.schema.boolean(),
 })

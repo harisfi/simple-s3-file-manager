@@ -64,6 +64,7 @@
     "@vinejs/vine": "^2.1.0",
     "jose": "^5.8.0",
     "luxon": "^3.5.0",
+    "minio": "^8.0.1",
     "pg": "^8.12.0",
     "reflect-metadata": "^0.2.2",
     "ulid": "^2.3.0"

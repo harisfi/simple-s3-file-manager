@@ -6,6 +6,20 @@ actions:
       forward_client_headers: true
     permissions:
       - role: administrator
+  - name: get_storage_download_url
+    definition:
+      kind: ""
+      handler: '{{HASURA_ACTION_BASE_URL}}/storage/download-url'
+      forward_client_headers: true
+    permissions:
+      - role: administrator
+  - name: get_storage_upload_url
+    definition:
+      kind: ""
+      handler: '{{HASURA_ACTION_BASE_URL}}/storage/upload-url'
+      forward_client_headers: true
+    permissions:
+      - role: administrator
   - name: store_file
     definition:
       kind: synchronous
@@ -25,6 +39,8 @@ custom_types:
   input_objects:
     - name: FileStoreInput
     - name: FileUpdateInput
+    - name: StorageUploadUrlInput
+    - name: StorageDownloadUrlInput
   objects:
     - name: FileStoreOutput
       relationships:
@@ -47,4 +63,6 @@ custom_types:
           source: ss3fm
           type: object
     - name: FileDeleteOutput
+    - name: StorageUploadUrlOutput
+    - name: StorageDownloadUrlOutput
   scalars: []

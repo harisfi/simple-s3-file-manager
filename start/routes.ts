@@ -14,6 +14,7 @@ import { middleware } from './kernel.js'
 
 import AuthController from '#controllers/auth_controller'
 import FilesController from '#controllers/files_controller'
+import StoragesController from '#controllers/storages_controller'
 
 router.get('/auth', [AuthController, 'verify'])
 
@@ -32,6 +33,13 @@ router
         router.post('delete', [FilesController, 'delete'])
       })
       .prefix('file')
+
+    router
+      .group(() => {
+        router.post('upload-url', [StoragesController, 'getUploadUrl'])
+        router.post('download-url', [StoragesController, 'getDownloadUrl'])
+      })
+      .prefix('storage')
   })
   .prefix('action')
   .use(middleware.action())

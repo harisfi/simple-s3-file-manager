@@ -4,6 +4,18 @@ type Mutation {
   ): FileDeleteOutput!
 }
 
+type Query {
+  get_storage_download_url(
+    input: StorageDownloadUrlInput!
+  ): StorageDownloadUrlOutput!
+}
+
+type Query {
+  get_storage_upload_url(
+    input: StorageUploadUrlInput!
+  ): StorageUploadUrlOutput!
+}
+
 type Mutation {
   store_file(
     input: FileStoreInput!
@@ -30,6 +42,14 @@ input FileUpdateInput {
   user_id: String
 }
 
+input StorageUploadUrlInput {
+  object_name: String!
+}
+
+input StorageDownloadUrlInput {
+  object_name: String!
+}
+
 type FileStoreOutput {
   id: String!
 }
@@ -40,5 +60,13 @@ type FileUpdateOutput {
 
 type FileDeleteOutput {
   id: String!
+}
+
+type StorageUploadUrlOutput {
+  url: String!
+}
+
+type StorageDownloadUrlOutput {
+  url: String!
 }
 
