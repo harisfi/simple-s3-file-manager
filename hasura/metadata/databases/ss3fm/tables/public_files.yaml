@@ -1,0 +1,29 @@
+table:
+  name: files
+  schema: public
+select_permissions:
+  - role: administrator
+    permission:
+      columns:
+        - id
+        - name
+        - url_path
+        - user_id
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+  - role: guest
+    permission:
+      columns:
+        - created_at
+        - id
+        - name
+        - updated_at
+        - url_path
+      filter:
+        user_id:
+          _eq: '-'
+      allow_aggregations: true
+    comment: ""

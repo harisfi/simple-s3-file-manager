@@ -1,0 +1,50 @@
+actions:
+  - name: delete_file
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_ACTION_BASE_URL}}/file/delete'
+      forward_client_headers: true
+    permissions:
+      - role: administrator
+  - name: store_file
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_ACTION_BASE_URL}}/file/store'
+      forward_client_headers: true
+    permissions:
+      - role: administrator
+  - name: update_file
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_ACTION_BASE_URL}}/file/update'
+      forward_client_headers: true
+    permissions:
+      - role: administrator
+custom_types:
+  enums: []
+  input_objects:
+    - name: FileStoreInput
+    - name: FileUpdateInput
+  objects:
+    - name: FileStoreOutput
+      relationships:
+        - field_mapping:
+            id: id
+          name: data
+          remote_table:
+            name: files
+            schema: public
+          source: ss3fm
+          type: object
+    - name: FileUpdateOutput
+      relationships:
+        - field_mapping:
+            id: id
+          name: data
+          remote_table:
+            name: files
+            schema: public
+          source: ss3fm
+          type: object
+    - name: FileDeleteOutput
+  scalars: []

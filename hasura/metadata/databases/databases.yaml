@@ -1,0 +1,9 @@
+- name: ss3fm
+  kind: postgres
+  configuration:
+    connection_info:
+      database_url:
+        from_env: HASURA_GRAPHQL_PG_DATABASE_URL
+      isolation_level: read-committed
+      use_prepared_statements: false
+  tables: "!include ss3fm/tables/tables.yaml"

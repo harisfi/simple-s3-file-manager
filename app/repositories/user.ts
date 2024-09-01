@@ -1,11 +1,11 @@
 import * as jose from 'jose'
+import { IUserRepository, User, UserCountParams, UserFetchParams, UserRole } from '#domains/user'
+import env from '#start/env'
 import stringHelpers from '@adonisjs/core/helpers/string'
 import Client from '@keycloak/keycloak-admin-client'
 import { RequiredActionAlias } from '@keycloak/keycloak-admin-client/lib/defs/requiredActionProviderRepresentation.js'
 import UserRepresentation from '@keycloak/keycloak-admin-client/lib/defs/userRepresentation.js'
 import { UserQuery } from '@keycloak/keycloak-admin-client/lib/resources/users.js'
-import { IUserRepository, User, UserCountParams, UserFetchParams, UserRole } from '#domains/user'
-import env from '#start/env'
 
 export default class UserRepository implements IUserRepository {
   private static instance: UserRepository

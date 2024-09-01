@@ -1,9 +1,9 @@
-import type { HttpContext } from '@adonisjs/core/http'
-import type { NextFn } from '@adonisjs/core/types/http'
-import app from '@adonisjs/core/services/app'
 import { IUserUseCase, User, UserRole } from '#domains/user'
 import UserRepository from '#repositories/user'
 import UserUseCase from '#usecases/user'
+import { HttpContext } from '@adonisjs/core/http'
+import app from '@adonisjs/core/services/app'
+import { NextFn } from '@adonisjs/core/types/http'
 
 export default class AuthMiddleware {
   private userUseCase: IUserUseCase
@@ -36,7 +36,7 @@ export default class AuthMiddleware {
         throw new Error('invalid header')
       }
     } catch (error) {
-      ctx.response.unauthorized({
+      ctx.response.status(error.status ?? 401).json({
         message: app.inProduction ? 'Unauthorized' : error.message,
       })
     }

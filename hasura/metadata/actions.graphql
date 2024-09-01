@@ -1,0 +1,44 @@
+type Mutation {
+  delete_file(
+    id: String!
+  ): FileDeleteOutput!
+}
+
+type Mutation {
+  store_file(
+    input: FileStoreInput!
+  ): FileStoreOutput!
+}
+
+type Mutation {
+  update_file(
+    id: String!
+    input: FileUpdateInput!
+  ): FileUpdateOutput!
+}
+
+input FileStoreInput {
+  id: String
+  name: String!
+  url_path: String!
+  user_id: String
+}
+
+input FileUpdateInput {
+  name: String
+  url_path: String
+  user_id: String
+}
+
+type FileStoreOutput {
+  id: String!
+}
+
+type FileUpdateOutput {
+  id: String!
+}
+
+type FileDeleteOutput {
+  id: String!
+}
+

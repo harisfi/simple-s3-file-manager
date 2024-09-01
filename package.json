@@ -32,7 +32,8 @@
     "#config/*": "./config/*.js",
     "#domains/*": "./app/domains/*.js",
     "#repositories/*": "./app/repositories/*.js",
-    "#usecases/*": "./app/usecases/*.js"
+    "#usecases/*": "./app/usecases/*.js",
+    "#utils/*": "./app/utils/*.js"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^7.7.0",
@@ -58,12 +59,14 @@
     "@adonisjs/core": "^6.12.1",
     "@adonisjs/cors": "^2.2.1",
     "@adonisjs/lucid": "^21.1.1",
+    "@adonisjs/validator": "^13.0.2",
     "@keycloak/keycloak-admin-client": "^25.0.4",
     "@vinejs/vine": "^2.1.0",
     "jose": "^5.8.0",
     "luxon": "^3.5.0",
     "pg": "^8.12.0",
-    "reflect-metadata": "^0.2.2"
+    "reflect-metadata": "^0.2.2",
+    "ulid": "^2.3.0"
   },
   "hotHook": {
     "boundaries": [
