@@ -13,6 +13,13 @@ actions:
       forward_client_headers: true
     permissions:
       - role: administrator
+  - name: get_storage_raw_object_content
+    definition:
+      kind: ""
+      handler: '{{HASURA_ACTION_BASE_URL}}/storage/raw-object-content'
+      forward_client_headers: true
+    permissions:
+      - role: administrator
   - name: get_storage_upload_url
     definition:
       kind: ""
@@ -41,6 +48,7 @@ custom_types:
     - name: FileUpdateInput
     - name: StorageUploadUrlInput
     - name: StorageDownloadUrlInput
+    - name: StorageRawObjectContentInput
   objects:
     - name: FileStoreOutput
       relationships:
@@ -65,4 +73,5 @@ custom_types:
     - name: FileDeleteOutput
     - name: StorageUploadUrlOutput
     - name: StorageDownloadUrlOutput
+    - name: StorageRawObjectContentOutput
   scalars: []

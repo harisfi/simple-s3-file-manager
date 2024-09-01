@@ -19,4 +19,8 @@ export default class StorageUseCase implements IStorageUseCase {
   getDownloadUrl(objectName: string): Promise<string> {
     return this.storageRepository.getDownloadUrl(objectName)
   }
+
+  getRawObjectContent(objectName: string): Promise<string> {
+    return this.storageRepository.getRawObjectContent(objectName)
+  }
 }

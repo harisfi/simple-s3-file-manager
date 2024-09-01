@@ -19,3 +19,13 @@ export const storageGetDownloadUrlValidator = vine.compile(
     }),
   })
 )
+
+export const storageGetRawObjectContentValidator = vine.compile(
+  vine.object({
+    input: vine.object({
+      input: vine.object({
+        object_name: vine.string(),
+      }),
+    }),
+  })
+)

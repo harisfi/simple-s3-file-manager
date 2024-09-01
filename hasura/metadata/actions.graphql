@@ -11,6 +11,12 @@ type Query {
 }
 
 type Query {
+  get_storage_raw_object_content(
+    input: StorageRawObjectContentInput!
+  ): StorageRawObjectContentOutput!
+}
+
+type Query {
   get_storage_upload_url(
     input: StorageUploadUrlInput!
   ): StorageUploadUrlOutput!
@@ -50,6 +56,10 @@ input StorageDownloadUrlInput {
   object_name: String!
 }
 
+input StorageRawObjectContentInput {
+  object_name: String!
+}
+
 type FileStoreOutput {
   id: String!
 }
@@ -68,5 +78,9 @@ type StorageUploadUrlOutput {
 
 type StorageDownloadUrlOutput {
   url: String!
+}
+
+type StorageRawObjectContentOutput {
+  data: String!
 }
 

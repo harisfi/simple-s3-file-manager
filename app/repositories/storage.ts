@@ -1,5 +1,6 @@
 import { IStorageRepository } from '#domains/storage'
 import env from '#start/env'
+import logger from '@adonisjs/core/services/logger'
 import { Client } from 'minio'
 
 export default class StorageRepository implements IStorageRepository {
@@ -30,5 +31,30 @@ export default class StorageRepository implements IStorageRepository {
 
   getDownloadUrl(objectName: string): Promise<string> {
     return this.client.presignedGetObject(env.get('S3_BUCKET'), objectName)
+  }
+
+  async getRawObjectContent(objectName: string): Promise<string> {
+    const data = new Promise<string>((resolve, reject) => {
+      let buff = ''
+      let size = 0
+      this.client
+        .getObject(env.get('S3_BUCKET'), objectName)
+        .then((dataStream) => {
+          dataStream.on('data', (chunk) => {
+            buff += chunk
+            size += chunk.length
+          })
+          dataStream.on('end', () => {
+            logger.info('End. Total size = ' + size)
+            resolve(buff)
+          })
+          dataStream.on('error', (err) => {
+            logger.info(err)
+            reject(err)
+          })
+        })
+        .catch(reject)
+    })
+    return data
   }
 }

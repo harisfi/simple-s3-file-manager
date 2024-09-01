@@ -38,6 +38,7 @@ router
       .group(() => {
         router.post('upload-url', [StoragesController, 'getUploadUrl'])
         router.post('download-url', [StoragesController, 'getDownloadUrl'])
+        router.post('raw-object-content', [StoragesController, 'getRawObjectContent'])
       })
       .prefix('storage')
   })
